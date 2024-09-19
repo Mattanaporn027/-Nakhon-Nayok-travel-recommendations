@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เที่ยวจังหวัดนครนายก</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            padding-top: 50px;
+            cursor: url('img/star.png'), auto;
+        }
+
+        header {
+            background-color: #ffda79;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /*ส่วนหัว สีพื้นหลังพวก หน้าแรก สถานที่.... */
+        }
+        .container {
+             background-color: #f9f9f9; /* สีพื้นหลังอ่อนเพื่อความนุ่มนวล */
+             padding: 20px;
+             border-radius: 10px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background-color: rgba(250, 250, 250, 0.7);  /* สีขาวพร้อมความโปร่งใส 70% */
+            transform: translateY(-3px);
+        }
+        a:hover {
+            background-color: rgba(250, 250, 250, 0.7);  /* สีขาวพร้อมความโปร่งใส 70% */
+            transform: translateY(-3px);
+        }
+        .nav-link {
+            color: #00796b; /* สีลิงก์ */
+            font-weight: 500; /* ความหนาของตัวอักษร */
+            transition: color 0.3s ease, transform 0.3s ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสี */
+        }
+
+        .nav-link:hover {
+            
+            transform: scale(1.15); /* ขยายขนาดเมื่อ hover */
+        }
+
+        .nav-link i {
+            margin-right: 5px; /* เพิ่มช่องว่างระหว่างไอคอนกับข้อความ */
+        }
+        .nav-link.active {
+            background-color: #f4ee4c; /* สีเมื่ออยู่ในหน้าปัจจุบัน */
+            border-radius: 20px; /* ทำให้เมนูมีมุมโค้ง */
+            font-weight: bold; /* ทำให้ดูโดดเด่น */
+        }
+    
+        
+        .nav-link:hover {
+            color: #ff8c00; /*ส่วนท้าย สีเวลาเมาส์ชี้ตรงพวกชื่อ แผนก */
+        }
+
+        footer {
+            background-color: #333; /* พื้นหลัง ส่วนท้ายเว็บสีดำ */
+            color: #fff;
+        }
+
+        footer h5 {
+            color: #ff6347; /* ส่วนท้ายเว็บหัวข้อจัดทำโดย เสนอ */
+        }
+
+        footer .nav-link { /* ส่วนท้ายเว็บตรงสีชื่อสีขาว */
+            color: #ddd;
+            transition: color 0.3s;
+        }
+
+        .row {
+             background-color: #f9f9f9; /* ช่อง4เหลื่อมระหว่างที่เที่ยว */
+             padding: 20px;
+             border-radius: 10px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* สไตล์สำหรับภาพและเงา */
+        img.featurette-image {
+            border: 3px solid #ffc107; /* เพิ่มกรอบสีเหลืองทองรอบภาพ */
+            transition: transform 0.3s ease; /* เพิ่มเอฟเฟกต์การขยายขณะ hover */
+        }
+    
+
+        img.featurette-image:hover {
+            transform: scale(1.05); /* ขยายภาพเมื่อชี้เมาส์ */
+        }
+        .carousel-item img {
+            height: 900px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header class="p-3">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <i class="bi bi-globe me-2 fs-3"></i>
+                </a>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li>
+                        <a href="/index.html" class="nav-link px-2 text-dark">
+                            <i class="bi bi-house-door-fill"></i> หน้าแรก
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/nakhon.html" class="nav-link  active px-2 text-dark">
+                            <i class="bi bi-map-fill"></i> สถานที่ท่องเที่ยว
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/map.html" class="nav-link px-2 text-dark">
+                            <i class="bi bi-geo-alt-fill"></i> แผนที่
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact.html" class="nav-link px-2 text-dark">
+                            <i class="bi bi-telephone-fill"></i> ติดต่อเรา
+                        </a>
+                    </li>
+                </ul>
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-dark me-2">Login</button>
+                    <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- สไลด์หลักหน้าเว็บ -->
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/w1.gif" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="img/1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="img/2.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+      <hr class="featurette-divider">  <!-- สร้างเส้นแนวนอน -->
+
+                    <!-- เขื่อนขุนด่าน -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   1.เขื่อนขุนด่านปราการชล
+                    <span class="text-primary">เขื่อนแห่งความสวย</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    เริ่มที่เที่ยวนครนายกแห่งแรกกันที่นี่ ซึ่งแทบจะเรียกได้ว่าเป็นแลนด์มาร์กของนักวิ่ง นักปั่น รวมถึงกลุ่มบิ๊กไบค์ ต้องมีสักครั้งต้องที่ได้มาถ่ายรูปหน้าเขื่อน 
+                    เขื่อนขุนด่านปราการชน (ยาวตั้ง 2,594 เมตร) 
+                    <br>มา "เขื่อนขุนด่านปราการชล"สามารถชมความยิ่งใหญ่ของตัวเขื่อนกักเก็บน้ำ และขึ้นสันเขื่อนไปชมวิวอุทยานแห่งชาติเขาใหญ่มุมสูง บอกเลยต้องไปเที่ยวที่นี้ให้ได้! 
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/RKmSj">ติดตามข่าวสารเขื่อนขุนด่านปราปราชล »»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                    ร้านอาหารแนะนำของจังหวัดนครนายก 
+                <span class="text-primary">  ครัวจ่าขุน2</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    ครัวจ่าขุน2 "ถ้าพูดถึง "ส้มตำ" และ "คอหมูย่าง" ต้องบอกเลยว่าร้านลับนครนายกร้านนี้เด็ดสุดในย่าน เรียกได้ว่าเป็นร้านอาหารอีสานในดวงใจเลย 
+                    ทุกครั้งที่มาเราก็จะมาเก็บให้ครบทุกเมนูไปเรื่อย ๆ แต่เมนูที่อยากแนะนำคือ "ตำหมูกรอบ" เป็นรสชาติที่นัวถูกใจ 
+                    แบบที่ไม่สามารถบรรยายออกมาเป็นตัวอักษรได้เลย ทั้งรสชาติและความเข้ากันได้ของวัตถุดิบทุกอย่างที่ผสมรวมกันอยู่ในจานนี้มันเกินจะบรรยาย บอกเลยถ้าได้ลองจะรู้ว่าแสงออกปากนั้นเป็นอย่างไร"  
+                </p>
+                <a class="btn btn-warning" href="https://www.wongnai.com/listings/secret-restaurant-nakhonnayok?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd1.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd2.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w2.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!--ส่วนของรูป -->
+            </div>
+        </d>
+                <!-- จบ!! เขื่อนขุนด่าน-->
+
+                 <!--น้ำตกสาริกา -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   2.น้ำตกสาริกา
+                    <span class="text-primary">แหล่งสวยงามธรรมชาติ</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    “น้ำตกสาริกา” น้ำตกในเขตอุทยานแห่งชาติเขาใหญ่ ที่เที่ยวนครนายกที่เหมาะกับการมาสัมผัสกับบรรยากาศธรรมชาติและน้ำเย็น ๆ ของน้ำตก 
+                    <br>และทำท่าทางต่างๆในการถ่ายรูปกับน้ำตกที่กำลังตกลงมาอย่างต่อเนื่อง ซึ่งตัวน้ำตกมีอ่างรับน้ำที่สามารถลงไปเล่นน้ำได้สบาย ๆ บริการเข้าอุทยานฯ ชาวไทย ผู้ใหญ่ 40 บาท เด็ก 20 บาท ชาวต่างชาติ ผู้ใหญ่ 200 บาท เด็ก 100 บาท เปิดทุกวัน เวลา 08.00-17.00 น. 
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/CkWcX">ติดตามข่าวสารน้ำตกสาริกา »»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                    ร้านอาหารแนะนำของจังหวัดนครนายก 
+                <span class="text-primary">Lali Lali local cafe </span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    ร้านคาเฟ่ สไตล์ลอฟๆดิบๆ ที่เอาอาคารตึกแถวเก่ามารีโนเวท เป็นร้านคาเฟ่ ที่ร้านมีคาเฟ่แบบดิฟสด กับเครื่องทำกาแฟ มีให้เลือกความเข้มข้นของกาแฟ
+                     คั่วเข้ม กลาง อ่อน และที่สำคัญมีกาแฟนนำเข้าจากหลายประเทศ ให้เลือกดิฟ อีกด้วย หรือคนที่ชอบชาเขียว ที่รสชาติมีความเข้มข้นมาก เสริฟพร้อมเค้กช๊อคโกแลต เข้ากันได้ดี 
+                </p>
+                <a class="btn btn-warning" href="https://www.wongnai.com/restaurants/438686il-lali-lali-local-cafe?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd4.jpg" class="featurette-image img-fluid mx-auto rounded shadow " alt="อาหารท้องถิ่น">
+                <img src="img/ddd3.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w3.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป-->
+            </div>
+        </d>
+             <!-- จบน้ำตกสาริกา-->
+        
+            <!--น้ำตกวังตะไคร้ -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   3.อุทยานวังตะไคร้ 
+                    <span class="text-primary">แหล่งสวยงามธรรมชาติ</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    "อุทยานวังตะไคร้" เป็นสถานที่ท่องเที่ยวนครนายกที่เหมาะแก่การพักผ่อนที่แท้จริง บรรยากาศชุ่มชื้น       
+                    <br>เที่ยววังตะไคร้อย่าลืมเอาชุดมาเปลี่ยน เพราะกิจกรรมของที่นี่แต่ละอย่างชวนเปียกเรียกเหงื่อทั้งนั้น ไม่ว่าจะลงเล่นน้ำธรรมดา ๆ
+                    ล่องแก่งยางรถยนต์ โดดหอข้ามลำธาร ปฏิบัติภารกิจในฐานฝึกหน่วยรบพิเศษจำลองทั้ง 10 ฐาน นอกจากนี้ยังมีบริการรถรับ - ส่งไปเที่ยวหรือทำกิจกรรมอื่น ๆ ในสถานที่ที่ไกลออกไป เช่น ล่องแก่งแม่น้ำนครนายก ขับรถ ATV เล่น Paintball และ BB Gun ไปจนถึงนั่งเรือชมสันเขื่อนขุนด่านปราการชล ค่าบริการของแต่ละกิจกรรมอยู่ที่ประมาณ 300 - 500 บาท อย่าลืมเตรียมร่างกายให้พร้อมเพื่อที่จะมาพักผ่อนที่นี้!! 
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/7PsK5">ติดตามข่าวสารอุทยานวังตะไคร้ »»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                     อาหารแนะนำของจังหวัดนครนายก 
+                <span class="text-primary">ครัวริมธาร  </span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    "ร้านนี้จัดว่าเป็นอีกหนึ่งร้านลับนครนายกที่น่าสนใจมาก โต๊ะอาหารอยู่บริเวณริมลำธาร ได้นั่งกินข้าวเคล้าบรรยากาศริมธาร มีเสียงน้ำไหลเปิดเพลงไม่ดัง มีบริเวณให้เด็ก ๆ เล่นได้ เรียกว่าถ้ามากินบรรยากาศชิล ๆ ที่นี่ก็ตอบโจทย์ไม่แพ้ร้านดัง ๆ ในจังหวัดนครนายกเลย สำหรับเมนูเด็ด ๆ ที่ได้ลองในวันนี้มีทั้ง 
+                    "หมูแดดเดียว" เนื้อหมูนุ่ม รสชาติดีมาก ๆ เค็มกำลังดี "ต้มยำปลาคัง" ต้มยำใส่เห็ดฟาง และมะเขือเทศ หน้าตาคล้ายต้มแซ่บ แถมยังแซ่บมากไม่แพ้ต้มแซ่บเลยทีเดียว"</p>
+                <a class="btn btn-warning" href="https://www.wongnai.com/restaurants/468393rn-%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B8%A7%E0%B8%A3%E0%B8%B4%E0%B8%A1%E0%B8%98%E0%B8%B2%E0%B8%A3/photos?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd6.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd7.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd8.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w4.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป -->
+            </div>
+        </d>
+             <!-- จบน้ำตกวังตะไคร้ -->
+
+               <!--แก่งสามชั้น -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   4.แก่งสามชั้น
+                    <span class="text-primary">แหล่งแห่งการล่องแก่น</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    มีลักษณะเป็นหินสามชั้นเทลาดเอียงลงมาเป็นขั้นบันได มีสายน้ำไหลเย็นตลอดทั้งปี น้ำไหลเชี่ยวกว่าน้ำตกอื่นๆ
+                     นักท่องเที่ยวที่มาเที่ยวนครนายกจึงนิยมมาล่องแก่งที่นี่กันมาก นอกจากนี้ยังมีร้านอาหารและห่วงยางไว้คอยบริการ หิวเมื่อไหร่ก็แวะขึ้นบกไปกินได้เลยสะดวกมากๆ รอบ ๆ บริเวณแก่งสามชั้นก็มีที่พักด้วย 
+                    <br>
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/6nHCU">ติดตามข่าวสารแก่งสามชั้น »»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                    อาหารแนะนำของจังหวัดนครนายก 
+                <span class="text-primary">แหนมเนืองบ้านนา </span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    เมนูเด็ด: หมูพันใบชะพลู, แหนมเนือง, น้ำจิ้ม, ผักสดเครื่องเคียง
+                    ร้านนี้อยู่ริมถนนทางเข้ากรุงเทพหาง่ายจอดรถริมถนนได้เลยเป็นร้านอาหารเวียดนาม มีเมนูหลากหลาย จัดจานมาสวยงามใช้ได้
+                    รสชาติดี มีเอกลักษณ์ความอาหารเวียดนามคือผักเยอะๆ ได้สุขภาพดีครับ แหนมเนืองได้เครื่องเคียงมาพรึ่บเลย หมูพันใบชะพลู ไม่น่าเชื่อว่ามันเข้ากัน
+                </p>
+                <a class="btn btn-warning" href="https://www.wongnai.com/restaurants/413760qb-%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B8%A7%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%AA%E0%B8%B5%E0%B9%88%E0%B9%81%E0%B8%84%E0%B8%A7?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd11.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd10.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd9.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w5.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป -->
+            </div>
+        </d>
+             <!-- จบแก่งสามชั้น -->
+
+               <!--อ่างเก็บน้ำห้วยปรือ  -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   5.อ่างเก็บน้ำห้วยปรือ 
+                    <span class="text-primary">วิวงามเหมาะกับนั่งเล่นกับคู่ซี้</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    สถานที่ท่องเที่ยวนครนายกแห่งนี้วิวสวย อากาศดี ลมพัดเย็นสบาย  หรือจะให้ฟินสุดจริง ๆ ควรได้ตื่นตอนเช้าชมพระอาทิตย์ขึ้น เพราะจะเห็นท้องฟ้าค่อย ๆ
+                     ไล่สีเปลี่ยนจากมืดไปจนสว่าง วันไหนอากาศชื้นก็จะได้เห็นไอหมอกลอยอยู่ไกล ๆ สามารถกางเต็นท์ค้างแรมได้ในบริเวณหน่วยพิทักษ์อุทยานแห่งชาติเขาใหญ่ มีเต็นท์ให้เช่า
+                    <br>
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/w2jVK">ติดตามข่าวสารอ่างเก็บน้ำห้วยปรือ »»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                    ร้านอาหารแนะนำของจังหวัดนครนายก 
+                <span class="text-primary">บ้านสวนอบอวลรักบ้านนา </span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    ชาบูกลางทุ่ง จ.นครนายก "บ้านสวนอบอวลรัก บ้านนา" ยกชาบูต้นตำรับจากกรุงเทพฯ มาไว้ท่ามกลางธรรมชาติบนพื้นที่ขนาดใหญ่ ให้คุณได้ฟินกับน้ำซุปโฮมเมด 18 แบบ วัตถุดิบสดใหม่ 
+                    ไฮไลต์ก็คือการเก็บผักสด ๆ จากแปลงมากินกับชาบู มีผักหลากหลายชนิด และยังสามารถเดินชมพื้นที่เกษตรภายในร้าน ให้อาหารเป็ด ไก่ และน้องกระต่ายได้ด้วย พิเศษสุด ๆ เพราะที่นี่มีรีสอร์ทกลางทุ่ง
+                     ให้คุณได้พักผ่อนใกล้ชิดธรรมชาติ ยังมีคาเฟ่น่ารัก ๆ ที่เสิร์ฟกาแฟสด ชา ขนมปังปิ้ง และไอศกรีมโฮมเมดอีกด้วย 
+                     <br>
+                     <br>
+                <a class="btn btn-warning" href=" https://www.wongnai.com/listings/restaurants-nakhon-nayok?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd12.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd113.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd14.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w6.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป -->
+            </div>
+        </d>
+             <!-- อ่างเก็บน้ำห้วยปรือ -->
+
+
+              <!--น้ำตกนางรอง  -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   6.น้ำตกนางรอง
+                    <span class="text-primary">แหล่งรวมเพื่อน</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    ที่เที่ยวนครนายกสุดฮิต น้ำตกขนาดกลาง สายน้ำไหลผ่านชั้นหินลดหลั่นลงมาเกิดเป็นแอ่งน้อยใหญ่ 
+                    <br>บริเวณโดยรอบร่มรื่นเป็นธรรมชาติ 
+                    มีการจัดทำซุ้มม้านั่งและสถานที่พักผ่อน ระหว่างทางเข้าก็จะมีซุ้มขายข้าวเหนียว ส้มตำ ไก่ย่าง ให้นักท่องเที่ยวได้ซื้อแล้วเข้าไปนั่งปิกนิกกันเติมพลังก่อนลงเล่นน้ำ 
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/OTwiX">ติดตามข่าวสารน้ำตกนางรอง »»</a> 
+
+                <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   ร้านอาหารแนะนำของจังหวัดนครนายก
+                <span class="text-primary">เรือนลอมฟาง</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    ตามหาร้านของกินนครนายก มาเจอร้าน “เรือนลอมฟาง” อาหารไทย รสชาติดีครบเครื่อง บรรยากาศดี เมนูเด็ด “ต้มยำกุ้งน้ำข้น” รสชาติเปรี้ยวกลมกล่อมจากมะนาว กุ้งตัวใหญ่และสดมาก
+                     และ “หลนปู” ผัดกับกะทิร้อน ๆ รสชาติกลมกล่อม กินคู่กับผักต่าง ๆ ที่ทางร้านจัดให้มาเยอะมาก เหมาะอย่างยิ่งเป็น ร้านอาหารครอบครัว หรือกลุ่มคณะ
+                </p>
+                <a class="btn btn-warning" href="https://www.wongnai.com/listings/restaurants-nakhon-nayok?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd15.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd16.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd17.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+           </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w7.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป -->
+            </div>
+        </d>
+             <!-- จบน้ำตกนางรอง -->
+
+             <!--น้ำตกเหวนรก  -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   7.น้ำตกเหวนรก 
+                    <span class="text-primary">แหล่งวัดความแข็งแกร่ง</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    เป็นน้ำตกที่มีความสูงและความสวยงาม ทั้งเดินป่าศึกษาธรรมชาติ ดูพรรณไม้ ดูผีเสื้อ 
+                    <br>มีความสูงประมาณ 25 เมตร เป็นน้ำตกหินภูเขาไฟที่มีลักษณะพิเศษที่เรียกว่า หินกรวดภูเขาไฟ น้ำไหลแรงมาก ห้ามลงเล่นน้ำ
+                    จัดมุมไว้ให้ถ่ายรูปสวยงามแต่กว่าจะลงไปถึงใช้ความลุ้นมากพอควรเพราะบันไดลาดชันมากๆตอนลงว่ายากแล้ว ตอนขึ้นเหนื่อยกว่ามาก
+                    แนะนำว่าควรใส่รองเท้าให้ทะมัดทะแมงสักหน่อยติดน้ำดื่มเข้าไปในวันอากาศร้อนๆ 
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/Lus16">ติดตามข่าวสารน้ำตกเหวนรก »»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   ร้านอาหารแนะนำของจังหวัดนครนายก
+                <span class="text-primary">ครัวลมโชย นครนายก </span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    “ร้านตามสั่งริมทางกลางทุ่งนา ร้านเด็ดนครนายก สไตล์ร้านก็จะออกแนวแบบบ้าน ๆ เมนูอาหารก็จะเป็นแนวพื้นบ้าน เมนูเด็ด “ต้มยำปลาคัง” เนื้อปลานุ่มเคี้ยวง่าย 
+                    มีความมัน ๆ รสชาติน้ำซุปจัดจ้าน “ทอดมันปลา” กินคู่กับ “น้ำจิ้มไก่” ที่ใส่ถั่วป่น รสชาติดีมาก และ “ไก่ผัดเม็ดมะม่วง” ผัดออกแนวเปรี้ยวหวาน รสชาติออกหวานนำ ช่วยดับความเผ็ดได้ดีค่ะ” 
+                </p>
+                <a class="btn btn-warning" href=" https://www.wongnai.com/listings/restaurants-nakhon-nayok?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd18.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd19.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd20.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w8.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป -->
+            </div>
+        </d>
+             <!-- น้ำตกเหวนรก-->
+
+               <!--น้ำตกช่องลม  -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   8.น้ำตกช่องลม
+                    <span class="text-primary"></span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    ที่เที่ยวนครนายกที่สวยเหมือนหลุดเข้าไปอยู่ในหนัง “น้ำตกช่องลม” ที่เที่ยวนครนายกลับ ๆ ที่ต้องนั่งเรือเข้าไปภายในเขื่อนขุนด่านปราการชล ค่าเรืออยู่ที่ 200 บาทต่อคน
+                     และต้องรอให้มีคนไปครบ 8 คนก่อนถึงจะออกเรือได้ แต่ความสวยงามที่ได้บอกเลยว่าคุ้มค่าคุ้มราคา ลงจากเรือแล้วอย่าลืมคิดท่าทางการถ่ายรูปกับน้ำตกชมลมกันนะ
+                    <br>คุ้มค่ากับเงิน 200 บาทแน่นอนแนะนำให้ไปช่วงเดือน มิถุนายน
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/AfIDQ">ติดตามข่าวสารน้ำตกช่องลม »»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                  ร้านอาหารแนะนำของจังหวัดนครนายก
+                <span class="text-primary">ครัวไฮโดร</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    ร้านอาหารแนะนำนครนายก “ครัวไฮโดร” บรรยากาศชิล ๆ สไตล์บ้าน ๆ ในต่างจังหวัด เมนูเด็ด “ปลาทับทิมทอดสมุนไพร” รสชาติดีมาก ปลาทอดมากรอบ 
+                    นอกจากบรรยากาศแล้ว “ผัก” ของที่นี่ยังปลอดสารพิษ เพราะมีแปลงปลูกผักไฮโดรที่ปลูกเอง
+                </p>
+                <a class="btn btn-warning" href="https://www.wongnai.com/listings/restaurants-nakhon-nayok?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd21.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd22.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd23.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">            
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w9.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป -->
+            </div>
+        </d>
+             <!--น้ำตกช่องลม-->
+
+             
+               <!-- วัดมณีวงศ์ -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                   9.วัดมณีวงศ์
+                    <span class="text-primary"></span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    วัดมณีวงศ์เป็นที่รู้จักและเป็นที่นิยมของสายบุญ สายมูทั้งหลาย คือ วังรัตนมณีมหานครบาดาลนาคราช หรือ ถ้ำพญานาค บางคนเรียกว่า วังพญานาค
+                    โดยด้านหน้าทางเข้าอาคารที่เป็นที่ตั้งของถ้ำจะพบกับสะพานที่เป็นประติมากรรมปูนปั้นที่จำลองการข้ามห้วงนรก ตัวสะพานจะเป็นพญานาคห้าเศียรพร้อมองค์พญานาคจำแลงที่อยู่ในสระบัว 
+                    ซึ่งด้านข้างถัดจากสระบัวจะเป็นห้วงนรกที่มีมือจำนวนมากชูขึ้นมา ถือว่าเป็นงานศิลป์ชั้นยอดที่ประณีต และแฝงคติธรรมข้อคิดได้เป็นอย่างดี
+                    <br>
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/lnf1j">ติดตามข่าวสารวัดมณีวงศ์ »»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                    ร้านอาหารแนะนำของจังหวัดนครนายก
+                <span class="text-primary">ลุงเผ่า ก๋วยเตี๋ยวเรือกะลา </span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    “ร้านก๋วยเตี๋ยวเรือ มีชื่อเสียงและโด่งดังร้านเด็ดนครนายก บรรยากาศของร้านทำได้น่ารัก ออกแนวลูกทุ่งไม้ ๆ เมนูเด็ด “ก๋วยเตี๊ยวกะลา” เครื่องแน่นสมราคา 
+                    น้ำซุปแซ่บแบบปรุงจัดจ้านดีค่ะ กินคู่กับ “กากหมูเจียว” รสชาติดีมากค่ะ ยิ่งตอนเจียวมาใหม่ ๆ กรอบกลมกล่อมมาก” 
+                </p>
+                <a class="btn btn-warning" href=" https://www.wongnai.com/listings/restaurants-nakhon-nayok?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd24.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd25.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd26.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w10.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป -->
+            </div>
+        </d>
+             <!--วัดมณีวงศ์--> 
+
+             <!--ผาเดียวดาย  -->
+        <d iv class="row featurette my-5"> <!-- เพิ่มระยะห่างด้านบนและด้านล่าง -->
+            <div class="col-md-7 order-md-2"> <!-- ย้ายตำแหน่งเพื่อให้ภาพอยู่ทางขวา -->
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                    10.ผาเดียวดาย
+                    <span class="text-primary"></span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    อยากชมวิวทะเลหมอก ไม่ต้องไปไหนไกล มาแวะที่เที่ยวนครนายกแห่งนี้เลย “ผาเดียวดาย” เพราะวิวที่นี่เขาสวยจริง ๆ ยิ่งหลังฝนตกเสร็จใหม่ๆจะมองเห็นหมอกปกคลุมระหว่างเขารับลองว่าสวยสุดๆ
+                    คุ้มค่ากับการขึ้นมาไกลถึงขนาดนี้ บริเวณใกล้เคียงมีน้ำตกให้เที่ยวอีกด้วย มาที่เดียว ได้ชมทั้งวิวทะเลหมอก ภูเขา และน้ำตกเลย 
+                    <br>
+                </p>
+                <a class="btn btn-warning" href="https://shorturl.asia/lnf1j">ติดตามข่าวสารผาเดียวดาย»»</a> 
+                  <!-- เริ่มส่วนเกี่ยวกับอาหารท้องถิ่น -->
+        <hr class="featurette-divider"> <!-- สร้างเส้นแนวนอน -->
+        <div class="row featurette my-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1 mb-4">
+                    ร้านอาหารแนะนำของจังหวัดนครนายก
+                <span class="text-primary">คาเฟ่ สุ/ก/ภาพร้านมันเขี้ยว</span> <!-- เปลี่ยนสีข้อความได้ เพื่อเน้น -->
+                </h2>
+                <p class="lead">
+                    วัตถุดิบที่คัดสรรมาอย่างดีเหมือนเดิม เมนูเด็ด “สลัดผัก” ห้ามพลาด ผักปลอดภัยไร้สารพิษ เพราะทางร้านปลูกเองดูแลเอง “ยำสลัดซีฟู้ด” 
+                    น้ำสลัดซีฟู้ดละมุนมาก รสชาติคือดีงาม และ “ข้าวยำ” อันนี้คือดีงาม เครื่องแน่น น้ำซอสกลมกล่อมกำลังดี แนะนำร้านนี้เลย ถ้าใครมีโอกาสได้มาที่นครนายก” 
+                </p>
+                <a class="btn btn-warning" href="https://www.wongnai.com/listings/restaurants-nakhon-nayok?ref=ct">ดูข้อมูลเพิ่มเติมเกี่ยวกับอาหารท้องถิ่น »»</a>
+            </div>
+            <div class="col-md-5">
+                <img src="img/ddd27.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                <img src="img/ddd28.jpg" class="featurette-image img-fluid mx-auto rounded shadow" alt="อาหารท้องถิ่น">
+                <img src="img/ddd29.jpg" class="featurette-image img-fluid mx-auto rounded shadow my-3" alt="อาหารท้องถิ่น">
+                
+            </div>
+        </div>
+                <!-- จบส่วนเกี่ยวกับอาหารท้องถิ่น -->
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="img/w11.gif" class="featurette-image img-fluid mx-auto rounded shadow" alt="รูป"> <!-- ส่วนของรูป -->
+            </div>
+        </d>
+             <!--ผาเดียวดาย-->
+
+        <hr class="featurette-divider">  <!-- สร้างเส้นแนวนอน -->
+
+ <br> <!--เว้นวรรค -->
+    <!--ส่วนท้าย -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <i class="bi bi-globe fs-2"></i>
+                    <small class="d-block mb-3 text-muted">&copy;เว็บไซต์นี้ทำไว้เพื่อการศึกษาเท่านั้น</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">การท่องเที่ยวนครนายก</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5> make by</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">นางสาว มัทนพร สุขเทียม</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">แผนก : คอมพิวเตอร์ธุรกิจ</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">ระดับชั้น : ปวส.1/2</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>offer</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0">อาจารย์ กิตติชัย ทองดี</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  
+
+
+
+    
+</body>
+</html>
